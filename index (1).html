@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendario de Agendamiento</title>
+  <style>
+    /* Estructura general en dos columnas */
+body {
+  font-family: Arial, sans-serif;      /* Fuente del texto en toda la página */
+  display: flex;                       /* Usa flexbox para colocar elementos en fila */
+  justify-content: center;            /* Centra los cuadros horizontalmente */
+  align-items: center;                /* Centra los cuadros verticalmente */
+  height: 100vh;                      /* Altura total de la ventana */
+  margin: 0;                          /* Elimina márgenes predeterminados del body */
+  gap: 60px;                          /* Espacio entre los dos cuadros */
+  background-color: #f2f2f2;          /* Color de fondo gris claro */
+}
+
+.dias {
+  display: grid;                          /* Mismo sistema que el calendario */
+  grid-template-columns: repeat(7, 1fr);  /* 7 columnas iguales */
+  gap: 5px;                               /* Espacio entre días */
+  font-weight: bold;                      /* Letras en negrita */
+  text-align: center;                     /* Centra el texto */
+  margin-bottom: 10px;                    /* Espacio debajo de los días */
+  color: #444;                            /* Color gris oscuro */
+}
+
+/* Contenedor general de ambos cuadros (si se usa un div con clase "container") */
+.container {
+  display: flex;                      /* Flexbox horizontal */
+  gap: 60px;                          /* Espacio entre los cuadros dentro del contenedor */
+}
+
+/* Estilo general para los cuadros (bienvenida y calendario) */
+.cuadr {
+  background: white;                  /* Fondo blanco para que se vea limpio */
+  border-radius: 15px;                /* Bordes redondeados */
+  padding: 25px;                      /* Espacio interno entre contenido y borde */
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+  transition: transform 0.2s ease;    /* Transición suave en transformaciones (por si se animan) */
+  width: auto;                       /* Ancho fijo de los cuadros */
+}
+
+/* Estilo específico para el texto de bienvenida */
+#bienbenida {
+  display: flex;                      /* Flexbox vertical */
+  flex-direction: column;            /* Los hijos se apilan en columna */
+  justify-content: center;           /* Centra el contenido verticalmente */
+  text-align: left;                  /* Alinea el texto a la izquierda */
+}
+
+/* Estilo del calendario como una grilla */
+#calendar {
+  display: grid;                      /* Usa CSS Grid para colocar los días */
+  grid-template-columns: repeat(7, 1fr); /* Crea 7 columnas iguales (una por cada día de la semana) */
+  gap: 5px;                           /* Espacio entre las celdas */
+  margin-top: 20px;               /* Separación con el título o contenido superior */
+}
+
+/* Estilo de cada día del calendario */
+.day {
+  border: 1px solid #ccc;             /* Borde gris claro */
+  padding: 15px;                      /* Espacio interno (hace la caja más grande) */
+  text-align: center;                /* Centra el número del día */
+  cursor: pointer;                   /* Cambia el cursor al pasar sobre el día */
+  background-color: #fff;            /* Fondo blanco */
+  border-radius: 5px;                /* Bordes redondeados */
+  transition: background 0.2s;       /* Efecto suave al pasar el mouse */
+}
+
+/* Cambia el fondo al pasar el mouse por encima */
+.day:hover {
+  background-color: #e0e0e0;         /* Fondo gris claro al hacer hover */
+}
+
+/* Estilo del modal que aparece al hacer clic en un día */
+.modal {
+  display: none;                     /* Oculto por defecto */
+  position: fixed;                  /* Se mantiene fijo en pantalla */
+  z-index: 1;                       /* Capa superior */
+  left: 0; top: 0;                  /* Posición en la esquina superior izquierda */
+  width: 100%; height: 100%;       /* Cubre toda la pantalla */
+  background-color: rgba(0,0,0,0.4); /* Fondo negro semitransparente */
+}
+
+/* Contenido dentro del modal */
+.modal-content {
+  background-color: #fff;           /* Fondo blanco del cuadro */
+  margin: 15% auto;                 /* Centrado vertical con margen superior del 15% */
+  padding: 30px;                    /* Espacio interno */
+  width: 350px;                     /* Ancho fijo del modal */
+  border-radius: 8px;               /* Bordes redondeados */
+}
+
+/* Botón para cerrar el modal X */
+.close {
+  float: right;                     /* Alineado a la derecha */
+  font-size: 20px;                  /* Tamaño del ícono de cierre */
+  cursor: pointer;                 /* Cursor en forma de mano */
+}
+
+#saveBtn {
+  background-color: #4CAF50; /* Color de fondo verde (principal) */
+  color: white;              /* Texto blanco */
+  padding: 12px 20px;        /* Espaciado interno: 12px arriba/abajo, 20px lados */
+  border: none;              /* Sin borde */
+  border-radius: 8px;        /* Bordes redondeados */
+  font-size: 16px;           /* Tamaño del texto */
+  cursor: pointer;           /* Cambia el cursor a una mano al pasar por encima */
+  width: 100%;               /* Ocupa todo el ancho del contenedor */
+  transition: 
+    background-color 0.3s ease, /* Transición suave del color al hacer hover */
+    transform 0.2s ease;         /* Transición suave del escalado */
+  margin-top: 15px;          /* Espacio encima del botón */
+}
+
+#saveBtn:hover {
+  background-color: #45a049; /* Color más oscuro al pasar el mouse */
+  transform: scale(1.02);    /* Ligeramente más grande para dar efecto de elevación */
+}
+
+#saveBtn:active {
+  transform: scale(0.98);    /* Ligeramente más pequeño al hacer clic, simula presión */
+}
+
+#eventText {
+  width: 100%;               /* Ocupa todo el ancho del modal */
+  height: 80px;              /* Altura del cuadro de texto */
+  padding: 10px 15px;        /* Espaciado interno: arriba/abajo 10px, lados 15px */
+  border: 1px solid #ccc;    /* Borde gris claro */
+  border-radius: 8px;        /* Bordes redondeados */
+  font-size: 16px;           /* Tamaño del texto */
+  resize: none;              /* Evita que el usuario cambie el tamaño del cuadro */
+  box-sizing: border-box;    /* Incluye padding y borde en el ancho total */
+  margin-top: 10px;          /* Espacio arriba del cuadro */
+  font-family: inherit;      /* Usa la misma fuente del resto de la página */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+#eventText:focus {
+  border-color: #4CAF50;     /* Cambia el color del borde al hacer clic */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3); /* Sombra sutil al enfocarse */
+  outline: none;             /* Quita el borde azul predeterminado del navegador */
+}
+  </style>
+</head>
+<body>
+  <!-- Barra lateral izquierda -->
+  <div id="sidebar">
+    <div class="cuadr">
+      <h2>Calendario</h2>
+      <div class="dias">
+        <div>Lun</div>
+        <div>Mar</div>
+        <div>Mié</div>
+        <div>Jue</div>
+        <div>Vie</div>
+        <div>Sáb</div>
+        <div>Dom</div>
+      </div>
+      <div id="calendar"></div>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <section class="cuadr"><div id="main">
+    <h1>Bienvenido</h1>
+    <p>Selecciona una fecha en el calendario para agendar una cita por favor agrega solo la hora.</p>
+  </div></section>
+
+  <!-- Modal de evento -->
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="selectedDate"></h2>
+      <textarea id="eventText" placeholder="Escribe la hora aqui..."></textarea>
+      <button id="saveBtn">💾 Guardar</button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>

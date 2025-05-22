@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SillaLibre - Gestión de Reservas</title>
+    <link rel="stylesheet" href="style.css"/>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="imagen/SillaLibre.jpeg" alt="SillaLibre" class="logo-img" />
+                SILLALIBRE<span></span>
+            </div>
+            <ul>
+                <li><a href="#features">Características</a></li>
+                <li><a href="#restaurantes">Restaurantes</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <form class="search-form">
+                <input type="text" placeholder="Buscar..." id="searchInput">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div class="buttons">
+                <button class="client-access">Iniciar sesión</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="dicho">
+        <h1>Descubre y reserva en tu restaurante favorito.</h1>
+         <button onclick="scrollToFeatures()">Descubre más</button>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Características Destacadas</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <img src="imagen/reserva.jpeg" alt="Reservas Online" />
+                <h3>Reservas Online</h3>
+                <p>Permite a tus clientes reservar fácilmente desde cualquier dispositivo.</p>
+            </div>
+            <div class="feature">
+                <img src="imagen/Notificaciones.jpeg" alt="Notificaciones" />
+                <h3>Notificaciones Automáticas</h3>
+                <p>Recibe alertas por email o WhatsApp cuando se realiza una reserva.</p>
+            </div>
+            <div class="feature">
+                <img src="imagen/estadistica.jpeg" alt="Estadísticas" />
+                <h3>Estadísticas y Reportes</h3>
+                <p>Analiza el rendimiento de tus reservas con reportes visuales.</p>
+            </div>
+            <div class="feature">
+                <img src="imagen/gestion.jpeg" alt="Gestión" />
+                <h3>Gestión de Mesas</h3>
+                <p>Organiza visualmente la disponibilidad de mesas en tiempo real.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="restaurantes" class="restaurantes">
+        <h2>Restaurantes Populares</h2>
+        <div class="restaurantes-grid">
+            <div class="restaurante">
+                <img src="imagen/La cabrera.jpeg" alt="Restaurante 1" />
+                <a href="index (1).html"></a>
+                <h3>La cabrera bogota</h3>
+                <p>La Cabrera ofrece un viaje desde Bogotá hacia los sabores más emblemáticos de la parrilla argentina, a través de jugosos cortes madurados.</p>
+            </div>
+            <div class="restaurante">
+                <img src="imagen/petronio.jpeg" alt="Restaurante 2" />
+                <a href="index (1).html"></a>
+                <h3>Petronio colombia</h3>
+                <p>En Petronio - Cocina de autor cada uno de nuestros platos están inspirados en Colombia, su historia, su gente y su cultura. La combinación de modernidad y tendencias con tradición son el punto de encuentro en Petronio.</p>
+            </div>
+            <div class="restaurante">
+                <img src="imagen/Ushi.jpeg" alt="Restaurante 3" />
+                <a href="index (1).html"></a>
+                <h3>Ushin Japanese & Grill</h3>
+                <p>Sabores icónicos de Asía, exaltados en tradiciones ancestrales.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sugerencias">
+        <h2>¿Tienes sugerencias?</h2>
+        <form id="sugerenciaForm">
+            <textarea placeholder="Escribe aquí tus ideas..." required></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    <section class="contact" id="contacto">
+    <h2>Contacto</h2>
+    <div class="contact-info">
+        <p><i class="fa fa-envelope"></i> contacto@SILLALIBRE.COM</p>
+        <p><i class="fab fa-facebook"></i> /RESERVA_EN_SILLALIBRE</p>
+        <p><i class="fab fa-instagram"></i> @SILLA_LIBRE</p>
+        <p><i class="fab fa-twitter"></i> @SILLALIBRE</p>
+    </div>
+</section>
+
+    <footer>
+        <p>&copy; 2025 SillaLibre - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

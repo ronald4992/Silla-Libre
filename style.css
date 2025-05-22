@@ -1,0 +1,270 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* === HEADER y NAV === */
+header {
+    background-color: #800020;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.logo-img {
+    height: 40px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.logo span {
+    color: #fff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.buttons .client-access {
+    background-color: #fff;
+    color: #800020;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.buttons .client-access:hover {
+    background-color: #f2f2f2;
+}
+
+/* === BUSCADOR === */
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-form input {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.search-form button {
+    background-color: #fff;
+    color: #800020;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* === HERO / PORTADA === */
+.dicho {
+    text-align: center;
+    padding: 80px 20px;
+    background-color: #fef0f5;
+}
+
+.dicho h1 {
+    font-size: 2.5rem;
+    color: #800020;
+}
+
+.dicho p {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: #444;
+}
+
+.dicho button {
+    padding: 10px 20px;
+    background-color: #800020;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.dicho button:hover {
+    background-color: #a0002f;
+}
+
+/* === CARACTERÍSTICAS === */
+.features {
+    padding: 60px 20px;
+    background-color: #fff;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.features h2 {
+    text-align: center;
+    color: #800020;
+    margin-bottom: 40px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.feature img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    color: #800020;
+}
+
+/* === RESTAURANTES === */
+.restaurantes {
+    padding: 50px 20px;
+    background-color: #fff8f8;
+    text-align: center;
+}
+
+.restaurantes h2 {
+    color: #800020;
+    margin-bottom: 30px;
+}
+
+.restaurantes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.restaurante {
+    background-color: #fefefe;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.restaurante img {
+    width: 100%;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* === SUGERENCIAS === */
+.sugerencias {
+    background-color: #f5f5f5;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.sugerencias h2 {
+    color: #800020;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.sugerencias form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.sugerencias textarea {
+    width: 100%;
+    height: 120px;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.sugerencias button {
+    font-family: 'Georgia', serif;
+    background-color: #800020;
+    color: #fff;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.sugerencias button:hover {
+    background-color: #a0002f;
+}
+.contact table {
+    margin: 0 auto;
+    font-size: 1.1rem;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.contact td {
+    padding: 12px 20px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.contact i {
+    color: #800020;
+    margin-right: 8px;
+}
